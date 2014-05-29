@@ -53,4 +53,11 @@ CompanyDirectory::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+
+  namespace :api, defaults: {format: 'json'} do
+
+    resources :employees
+
+  end
 end

@@ -2,7 +2,7 @@ module Api
 
   class EmployeesController < ApplicationController
 
-    before_action :set_employee, only: [:show, :update]
+    before_action :set_employee, only: [:show, :update, :destroy]
     respond_to :json
 
     #GET http://server:port/api/employees
@@ -41,6 +41,14 @@ module Api
         render :json => { :success => true }
       else
         format.json { render :json => { :success => false, :errors => @employee.errors }, :status => :unprocessable_entity }
+      end
+    end
+
+    def destroy
+      if @employee.destroy
+        render :json => { :success => true }
+      else
+        render :json => { :success => false }
       end
     end
 

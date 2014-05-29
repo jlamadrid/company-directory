@@ -3,6 +3,7 @@ module Api
   class EmployeesController < ApplicationController
 
     before_action :set_employee, only: [:show]
+    respond_to :json
 
     #GET http://server:port/api/employees
     def index
@@ -18,10 +19,28 @@ module Api
     end
 
 
+    #POST
+    def create
+
+      @employee = Employee.new(employee_params)
+
+      if @employee.save
+        render :json => { :success => true, :data => @employee }, :status => :created
+      else
+        render :json => { :success => false, :errors => @employee.errors }, :status => :unprocessable_entity
+      end
+    end
+
+
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_employee
       @employee = Employee.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def employee_params
+      params.require(:employee).permit(:lname, :manager_id, :title, :department, :phone_cell, :phone_home, :phone_office, :email, :tags)
     end
 
   end

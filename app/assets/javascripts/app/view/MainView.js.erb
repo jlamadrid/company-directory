@@ -37,7 +37,7 @@ Ext.define('CD.view.MainView', {
                                 {
                                     xtype: 'button',
                                     itemId: 'addButton',
-                                    icon: 'resources/images/add.png',
+                                    icon: '<%= asset_path 'extjs/add.png' %>',
                                     text: 'Add Employee'
                                 }
                             ]
@@ -147,7 +147,7 @@ Ext.define('CD.view.MainView', {
                                         {
                                             xtype: 'button',
                                             itemId: 'editButton',
-                                            icon: 'resources/images/edit.png',
+                                            icon: '<%= asset_path 'extjs/edit.png' %>',
                                             text: 'Edit'
                                         },
                                         {
@@ -156,7 +156,7 @@ Ext.define('CD.view.MainView', {
                                         {
                                             xtype: 'button',
                                             itemId: 'removeButton',
-                                            icon: 'resources/images/delete.png',
+                                            icon: '<%= asset_path 'extjs/delete.png' %>',
                                             text: 'Delete'
                                         }
                                     ]

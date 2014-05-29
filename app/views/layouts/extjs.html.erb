@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>Efficient Market - Empowering businesses with real-time market intelligence.</title>
+  <link rel="stylesheet" href="http://cdn.sencha.com/ext/gpl/4.2.1/resources/ext-theme-classic/ext-theme-classic-all.css">
+  <%= stylesheet_link_tag    "extjs-main", :media => "all" %>
+
+  <!-- point to manifest file - app-main.js
+    http://railsapps.github.io/rails-javascript-include-external.html
+  -->
+  <%= javascript_include_tag "extjs-main" %>
+
+  <%= csrf_meta_tags %>
+  <script>
+      Ext.onReady(function () {
+          Ext.Msg.alert("Hello World","EXT JS working!!!");
+      });
+  </script>
+
+</head>
+<body>
+</body>
+</html>

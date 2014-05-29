@@ -1,0 +1,2 @@
+module ExtJsHelper
+end

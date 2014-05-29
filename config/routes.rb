@@ -55,6 +55,8 @@ CompanyDirectory::Application.routes.draw do
   #   end
 
 
+  get "/app", to: "ext_js#index"
+
   namespace :api, defaults: {format: 'json'} do
 
     resources :employees

@@ -25,7 +25,7 @@ Ext.application({
     appFolder: 'assets/app',
 
     controllers: [
-
+        'EmployeeController'
     ],
 
     enableQuickTips: false,

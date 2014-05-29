@@ -37,6 +37,10 @@ Ext.define('CD.controller.EmployeeController', {
 
             "#gridPanel": {
                 select: this.view
+            },
+
+            "#detailsPanel #editButton": {
+                click: this.edit
             }
 
         });
@@ -50,6 +54,22 @@ Ext.define('CD.controller.EmployeeController', {
 
         // Associate model with form
         form.loadRecord(model);
+
+        // Show window
+        formWindow.show();
+
+    },
+
+    edit: function(target) {
+
+        var data = target.up('panel').data,						// Get panel's assosiated data
+            store = this.getEmployeeStoreStore(),				// Get Records store
+            record = store.getById(data.id),					// Get current record
+            formWindow = Ext.create('widget.employeeform'),		// Create new form window
+            form = formWindow.down('form').getForm();			// Get form within window
+
+        // Load record model into form
+        form.loadRecord(record);
 
         // Show window
         formWindow.show();

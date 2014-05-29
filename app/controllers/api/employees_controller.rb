@@ -2,7 +2,7 @@ module Api
 
   class EmployeesController < ApplicationController
 
-    before_action :set_employee, only: [:show]
+    before_action :set_employee, only: [:show, :update]
     respond_to :json
 
     #GET http://server:port/api/employees
@@ -28,6 +28,19 @@ module Api
         render :json => { :success => true, :data => @employee }, :status => :created
       else
         render :json => { :success => false, :errors => @employee.errors }, :status => :unprocessable_entity
+      end
+    end
+
+    def update
+
+      #http://stackoverflow.com/questions/6770350/rails-update-attributes-without-save
+      @employee.attributes = employee_params
+
+      #if @employee.update_attributes(employee_params)
+      if @employee.save
+        render :json => { :success => true }
+      else
+        format.json { render :json => { :success => false, :errors => @employee.errors }, :status => :unprocessable_entity }
       end
     end
 

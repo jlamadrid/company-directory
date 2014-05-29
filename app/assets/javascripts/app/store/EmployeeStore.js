@@ -28,7 +28,6 @@ Ext.define('CD.store.EmployeeStore', {
             proxy: {
                 type: 'rest',
                 url: '/api/employees',
-                appendId: false,
                 reader: {
                     type: 'json',
                     root: 'data'

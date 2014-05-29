@@ -10,10 +10,12 @@ Ext.define('CD.model.Employee', {
     ],
 
     fields: [
+        /*
         {
             name: 'id',
             type: 'int'
         },
+        */
         {
             name: 'fname'
         },

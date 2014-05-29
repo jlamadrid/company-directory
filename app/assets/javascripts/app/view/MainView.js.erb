@@ -135,14 +135,13 @@ Ext.define('CD.view.MainView', {
                             itemId: 'detailsPanel',
                             tpl: [
                                 '<tpl if="values.id">',
-                                '    <h1>{title}</h1>',
-                                '    <p>',
-                                '        {description}',
-                                '    </p>',
+                                '    <h2>{lname}, {fname}</h2>',
+                                '    <h4>{title} ({department})</h4>',
+                                '    <p>{phone_cell}</p>',
                                 '</tpl>',
                                 '',
                                 '<tpl if="!values.id">',
-                                '    <h1>Please select a record</h1>',
+                                '    <h3>Please select a record</h3>',
                                 '</tpl>'
                             ],
                             resizable: false,

@@ -33,6 +33,10 @@ Ext.define('CD.controller.EmployeeController', {
 
             "#employeeForm #cancelButton": {
                 click: this.cancelEdit
+            },
+
+            "#gridPanel": {
+                select: this.view
             }
 
         });
@@ -85,7 +89,7 @@ Ext.define('CD.controller.EmployeeController', {
             store.commitChanges();
 
             // Update detail panel
-            detailsPanel.update(record.getData());
+            detailsPanel.update(record.data);
 
             // Close window
             formWindow.destroy();
@@ -96,6 +100,19 @@ Ext.define('CD.controller.EmployeeController', {
             form.markInvalid(errors);
 
         }
+
+    },
+
+    view: function(target, record) {
+
+        var details = this.getDetailsPanel(),	// Get detail panel via controller ref
+            toolbar = this.getDetailsToolbar();	// Get detail panel toolbar via controller ref
+
+        // Update the detail panel with the selected row's data
+        details.update(record.data);
+
+        // Show toolbar
+        toolbar.show();
 
     }
 

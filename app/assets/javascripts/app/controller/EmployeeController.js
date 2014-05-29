@@ -27,7 +27,7 @@ Ext.define('CD.controller.EmployeeController', {
                 click: this.add
             },
 
-            "#employeeForm #saveButton": {
+            "#employeeForm #saveButton": { //itemId: 'employeeForm',
                 click: this.save
             },
 
@@ -42,13 +42,60 @@ Ext.define('CD.controller.EmployeeController', {
 
         var formWindow = Ext.create('widget.employeeform'),	// Create new form window
             form = formWindow.down('form').getForm(),		// Get form within window
-            model = Ext.create('model.employee');			// Create new Record model - alias: 'model.employee',
+            model = Ext.create('model.employee',{});			// Create new Record model - alias: 'model.employee',
 
         // Associate model with form
         form.loadRecord(model);
 
         // Show window
         formWindow.show();
+
+    },
+
+    save: function(target) {
+
+        var form = target.up('form').getForm(),			// Get parent form
+            formWindow = target.up('window'),			// Get parent window
+            detailsPanel = this.getDetailsPanel(),		// Get details panel
+            detailsToolbar = this.getDetailsToolbar(),	// Get detail panel toolbar
+            record = form.getRecord(),					// Get record associated with form
+            store = this.getEmployeeStoreStore(),	    // Get Employee store
+            isNew = !record.get('id');					// Is new if no record ID exists
+
+        // Update associated record with form values
+        var errors = form.updateRecord();
+
+        // Valid
+        if (form.isValid()) {
+
+            // Add to store if new record
+            if (isNew) {
+
+                // Assign the record ID
+                // Normally, this would be a generated ID
+                //var id = store.getTotalCount() + 1;
+                //record.set("id", id);
+
+                // Add to store
+                store.add(record);
+
+            }
+
+            // Commit changes
+            store.commitChanges();
+
+            // Update detail panel
+            detailsPanel.update(record.getData());
+
+            // Close window
+            formWindow.destroy();
+
+        } else { // Invalid
+
+            // Show errors on form
+            form.markInvalid(errors);
+
+        }
 
     }
 

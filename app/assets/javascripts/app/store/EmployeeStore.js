@@ -22,11 +22,13 @@ Ext.define('CD.store.EmployeeStore', {
                     console.log("Employee Name: " + employee.get('fname') + " " + employee.get('lname'));
                 }
             },
+            autoSync: true,
             model: 'CD.model.Employee',
             storeId: 'employeeStoreId',
             proxy: {
                 type: 'rest',
                 url: '/api/employees',
+                appendId: false,
                 reader: {
                     type: 'json',
                     root: 'data'

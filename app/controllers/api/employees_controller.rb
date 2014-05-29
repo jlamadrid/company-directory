@@ -40,7 +40,7 @@ module Api
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(:lname, :manager_id, :title, :department, :phone_cell, :phone_home, :phone_office, :email, :tags)
+      params.require(:employee).permit(:fname, :lname, :manager_id, :title, :department, :phone_cell, :phone_home, :phone_office, :email, :tags, :created_at, :updated_at)
     end
 
   end

@@ -41,6 +41,10 @@ Ext.define('CD.controller.EmployeeController', {
 
             "#detailsPanel #editButton": {
                 click: this.edit
+            },
+
+            "#detailsPanel #removeButton": {
+                click: this.remove
             }
 
         });
@@ -120,6 +124,37 @@ Ext.define('CD.controller.EmployeeController', {
             form.markInvalid(errors);
 
         }
+
+    },
+
+    remove: function(target) {
+
+        var me = this;
+
+        // Confirm this delete
+        Ext.Msg.confirm('Confirm', 'Are you sure you want to delete this record?', function(btn) {
+
+            // User confirmed yes
+            if (btn == 'yes') {
+
+                var data = target.up('panel').data,				// Get assosiated data
+                    store = me.getEmployeeStoreStore(),			// Get Records store
+                    record = store.getById(data.id),			// Get current record
+                    detailsPanel = me.getDetailsPanel(),		// Get details panel
+                    detailsToolbar = me.getDetailsToolbar();	// Get details panel toolbar
+
+                // Delete from store
+                store.remove(record);
+
+                // Clear panel content
+                detailsPanel.update(null);
+
+                // Hide toolbar
+                detailsToolbar.hide();
+
+            }
+
+        });
 
     },
 

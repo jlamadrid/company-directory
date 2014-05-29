@@ -1,2 +1,7 @@
-class Api::EmployeesController < ApplicationController
+module Api
+
+  class EmployeesController < ApplicationController
+
+  end
+
 end

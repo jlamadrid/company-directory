@@ -34,7 +34,7 @@ Ext.application({
      */
     launch: function() {
 
-        //Ext.create('CD.view.MyViewport');
+        Ext.create('CD.view.MainView');
     }
 
 });

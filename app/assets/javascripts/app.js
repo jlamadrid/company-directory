@@ -15,14 +15,17 @@ Ext.application({
     ],
 
     models: [
+        'Employee'
     ],
 
     stores: [
+        'EmployeeStore'
     ],
 
     appFolder: 'assets/app',
 
     controllers: [
+
     ],
 
     enableQuickTips: false,

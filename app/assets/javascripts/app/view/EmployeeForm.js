@@ -13,9 +13,8 @@ Ext.define('CD.view.EmployeeForm', {
         'Ext.button.Button'
     ],
 
-    //height: 500,
     itemId: 'employeeForm',
-    width: 475,
+    //width: 475,
     layout: 'fit',
     manageHeight: false,
     title: 'Edit Employee',
@@ -28,6 +27,7 @@ Ext.define('CD.view.EmployeeForm', {
             bodyStyle: {
                 'background-color': '#fff'
             },
+
             items: [
                 {
                     xtype: 'form',
@@ -38,61 +38,136 @@ Ext.define('CD.view.EmployeeForm', {
                     bodyPadding: 10,
                     manageHeight: false,
                     title: '',
+
+                    fieldDefaults: {
+                        labelAlign: 'right',
+                        labelWidth: 90,
+                        msgTarget: 'qtip'
+                    },
+
                     items: [
                         {
-                            xtype: 'textfield',
-                            fieldLabel: 'First Name:',
-                            labelAlign: 'right',
-                            name: 'fname'
+                            xtype: 'fieldset',
+                            title: 'Basic Contact Info',
+                            defaultType: 'textfield',
+                            layout: 'anchor',
+
+                            defaults: {
+                                anchor: '100%'
+                            },
+
+                            items: [
+                                {
+                                    xtype: 'fieldcontainer',
+                                    fieldLabel: 'Name',
+                                    layout: 'hbox',
+                                    combineErrors: true,
+                                    defaultType: 'textfield',
+
+                                    defaults: {
+                                        hideLabel: 'true'
+                                    },
+
+                                    items: [{
+                                        name: 'fname',
+                                        fieldLabel: 'First Name',
+                                        flex: 2,
+                                        emptyText: 'First',
+                                        allowBlank: false
+                                    }, {
+                                        name: 'lname',
+                                        fieldLabel: 'Last Name',
+                                        flex: 3,
+                                        margins: '0 0 0 6',
+                                        emptyText: 'Last',
+                                        allowBlank: false
+                                    }]
+                                },
+
+                                {
+                                    xtype: 'container',
+                                    layout: 'hbox',
+                                    defaultType: 'textfield',
+                                    margin: '0 0 5 0',
+                                    items: [{
+                                        fieldLabel: 'Email Address',
+                                        name: 'email',
+                                        vtype: 'email',
+                                        flex: 1,
+                                        allowBlank: false
+                                    }, {
+                                        fieldLabel: 'Office Number',
+                                        labelWidth: 100,
+                                        name: 'phone-office',
+                                        width: 200,
+                                        emptyText: 'xxx-xxx-xxxx',
+                                        maskRe: /[\d\-]/,
+                                        regex: /^\d{3}-\d{3}-\d{4}$/,
+                                        regexText: 'Must be in the format xxx-xxx-xxxx'
+                                    }]
+                                }
+                            ]
                         },
                         {
-                            xtype: 'textfield',
-                            fieldLabel: 'Last Name:',
-                            labelAlign: 'right',
-                            name: 'lname'
+                            xtype: 'fieldset',
+                            title: 'Role Info',
+                            defaultType: 'textfield',
+                            layout: 'anchor',
+
+                            defaults: {
+                                anchor: '100%'
+                            },
+
+                            items: [
+                                {
+                                    xtype: 'textfield',
+                                    margin: '0 0 10',
+                                    fieldLabel: 'Title',
+                                    labelAlign: 'right',
+                                    name: 'title',
+                                    validateBlank: true
+                                },
+                                {
+                                    xtype: 'textfield',
+                                    margin: '0 0 10',
+                                    fieldLabel: 'Dept.',
+                                    labelAlign: 'right',
+                                    name: 'department'
+                                }
+                            ]
                         },
                         {
-                            xtype: 'textfield',
-                            margin: '0 0 10',
-                            fieldLabel: 'Title',
-                            labelAlign: 'right',
-                            name: 'title',
-                            validateBlank: true
-                        },
-                        {
-                            xtype: 'textfield',
-                            margin: '0 0 10',
-                            fieldLabel: 'Dept.',
-                            labelAlign: 'right',
-                            name: 'department'
-                        },
-                        {
-                            xtype: 'textfield',
-                            margin: '0 0 10',
-                            fieldLabel: 'Cell Phone',
-                            labelAlign: 'right',
-                            name: 'phone_cell'
-                        },
-                        {
-                            xtype: 'textfield',
-                            margin: '0 0 10',
-                            fieldLabel: 'Home Phone',
-                            labelAlign: 'right',
-                            name: 'phone_home'
-                        },
-                        {
-                            xtype: 'textfield',
-                            margin: '0 0 10',
-                            fieldLabel: 'Office Phone',
-                            labelAlign: 'right',
-                            name: 'phone_office'
-                        },
-                        {
-                            xtype: 'textfield',
-                            margin: '0 0 10',
-                            fieldLabel: 'Email',
-                            labelAlign: 'right',
-                            name: 'email'
+                            xtype: 'fieldset',
+                            title: 'Other Phone Numbers',
+                            defaultType: 'textfield',
+                            layout: 'anchor',
+
+                            defaults: {
+                                anchor: '100%'
+                            },
+
+                            items: [
+                                {
+                                    margin: '0 0 10',
+                                    fieldLabel: 'Cell Phone',
+                                    labelAlign: 'right',
+                                    name: 'phone_cell',
+                                    emptyText: 'xxx-xxx-xxxx',
+                                    maskRe: /[\d\-]/,
+                                    regex: /^\d{3}-\d{3}-\d{4}$/,
+                                    regexText: 'Must be in the format xxx-xxx-xxxx'
+                                },
+                                {
+                                    margin: '0 0 10',
+                                    fieldLabel: 'Home Phone',
+                                    labelAlign: 'right',
+                                    name: 'phone_home',
+                                    emptyText: 'xxx-xxx-xxxx',
+                                    maskRe: /[\d\-]/,
+                                    regex: /^\d{3}-\d{3}-\d{4}$/,
+                                    regexText: 'Must be in the format xxx-xxx-xxxx'
+                                }
+                            ]
                         },
                         {
                             xtype: 'container',

@@ -48,6 +48,10 @@ Ext.define('CD.model.Employee', {
             name: 'tags'
         },
         {
+            name: 'is_manager',
+            type: 'boolean'
+        },
+        {
             name: 'created_at',
             type: 'date'
         },

@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140529131658) do
     t.string   "fname"
     t.string   "lname"
     t.integer  "manager_id"
+    t.boolean  "is_manager"
     t.string   "title"
     t.string   "department"
     t.string   "phone_cell"

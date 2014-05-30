@@ -23,6 +23,31 @@ Ext.define('CD.view.EmployeeForm', {
     initComponent: function() {
         var me = this;
 
+        var cmbManager = Ext.create('Ext.form.ComboBox', {
+
+            fieldLabel: 'Manager',
+            name: 'manager_id',
+            store: 'EmployeeStore',
+            valueField: 'id',
+            emptyText: 'Reports to ...',
+
+            // Template for the dropdown menu.
+            // Note the use of "x-boundlist-item" class,
+            // this is required to make the items selectable.
+            tpl: Ext.create('Ext.XTemplate',
+                '<tpl for=".">',
+                '<div class="x-boundlist-item">{fname} {lname}</div>',
+                '</tpl>'
+            ),
+
+            // template for the content inside text field
+            displayTpl: Ext.create('Ext.XTemplate',
+                '<tpl for=".">',
+                '{fname} {lname}',
+                '</tpl>'
+            )
+        });
+
         Ext.applyIf(me, {
             bodyStyle: {
                 'background-color': '#fff'
@@ -98,7 +123,7 @@ Ext.define('CD.view.EmployeeForm', {
                                     }, {
                                         fieldLabel: 'Office Number',
                                         labelWidth: 100,
-                                        name: 'phone-office',
+                                        name: 'phone_office',
                                         width: 200,
                                         emptyText: 'xxx-xxx-xxxx',
                                         maskRe: /[\d\-]/,
@@ -130,10 +155,11 @@ Ext.define('CD.view.EmployeeForm', {
                                 {
                                     xtype: 'textfield',
                                     margin: '0 0 10',
-                                    fieldLabel: 'Dept.',
+                                    fieldLabel: 'Department',
                                     labelAlign: 'right',
                                     name: 'department'
-                                }
+                                },
+                                cmbManager
                             ]
                         },
                         {

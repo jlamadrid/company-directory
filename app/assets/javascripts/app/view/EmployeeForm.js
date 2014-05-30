@@ -23,11 +23,27 @@ Ext.define('CD.view.EmployeeForm', {
     initComponent: function() {
         var me = this;
 
+        var store = Ext.getStore('EmployeeStore');
+
+        var managers = [];
+        store.each(function(rec){
+            if(rec.get('is_manager') == true){
+                managers.push(rec);
+            }
+        });
+
+        var comboStore =  Ext.create('Ext.data.Store', {
+            model: 'CD.model.Employee',
+            data : managers
+        });
+
+        //The combo box listing managers
         var cmbManager = Ext.create('Ext.form.ComboBox', {
 
             fieldLabel: 'Manager',
             name: 'manager_id',
-            store: 'EmployeeStore',
+            store: comboStore,
+            queryMode: 'local',
             valueField: 'id',
             emptyText: 'Reports to ...',
 

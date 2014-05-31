@@ -16,7 +16,7 @@ garyf = Employee.create(fname: 'Gary',
                         phone_office: '473-401-3336',
                         email: 'gfrancis@philadelphiafinancial.com',
                         is_manager: true,
-                        tags: 'nightly_ops')
+                        tags: 'manager-apl, manager-java')
 
 Employee.create(fname: 'Juan',
                 lname: 'Lamadrid',
@@ -28,7 +28,7 @@ Employee.create(fname: 'Juan',
                 email: 'jlamadrid@philadelphiafinancial.com',
                 is_manager: false,
                 manager_id: garyf.id,
-                tags: 'nightly_ops')
+                tags: 'applications, fmdb')
 
 Employee.create(fname: 'Joe',
                 lname: 'Catalfamo',
@@ -39,4 +39,19 @@ Employee.create(fname: 'Joe',
                 phone_office: '444-444-4444',
                 email: 'jcatalfamo@philadelphiafinancial.com',
                 is_manager: true,
-                tags: 'nightly_ops')
+                tags: 'nightly_support, solar')
+
+Employee.create(fname: 'Derryl',
+                lname: 'Varghese',
+                title: 'Senior Developer',
+                department: 'IT',
+                phone_cell: '201-555-6603',
+                phone_home: '333-393-4100',
+                phone_office: '973-301-3486',
+                email: 'dvarghese@philadelphiafinancial.com',
+                is_manager: false,
+                manager_id: garyf.id,
+                tags: 'applications, fmdb, reportal')
+
+
+#Tags provide the following ability: filter employees involved in specific tasks, initiatives, that have certain skill sets, etc

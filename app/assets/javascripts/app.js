@@ -19,7 +19,8 @@ Ext.application({
     ],
 
     stores: [
-        'EmployeeStore'
+        'EmployeeStore',
+        'TagStoreInMemory'
     ],
 
     appFolder: 'assets/app',

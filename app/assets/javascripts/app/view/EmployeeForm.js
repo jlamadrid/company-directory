@@ -64,6 +64,14 @@ Ext.define('CD.view.EmployeeForm', {
             )
         });
 
+        var cmbTags = Ext.create('Ext.form.field.ComboBox', {
+            fieldLabel: 'Tags',
+            name: 'tags',
+            multiSelect: true,
+            displayField: 'tag',
+            store: 'TagStoreInMemory'
+        });
+
         Ext.applyIf(me, {
             bodyStyle: {
                 'background-color': '#fff'
@@ -209,6 +217,16 @@ Ext.define('CD.view.EmployeeForm', {
                                     regex: /^\d{3}-\d{3}-\d{4}$/,
                                     regexText: 'Must be in the format xxx-xxx-xxxx'
                                 }
+                            ]
+                        },
+                        {
+                            xtype: 'fieldset',
+                            title: 'About',
+                            defaultType: 'textfield',
+                            margin: '0 0 5 0',
+
+                            items: [
+                                cmbTags
                             ]
                         },
                         {

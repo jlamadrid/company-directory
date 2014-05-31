@@ -15,6 +15,29 @@ Ext.define('CD.view.MainView', {
     initComponent: function() {
         var me = this;
 
+        var cmbGroupingChoices = new Ext.form.field.ComboBox({
+            queryMode: 'local',
+            store: new Ext.data.ArrayStore({
+                id: 0,
+                fields: [
+                    'entityColumn',  // numeric value is the key
+                    'displayText'
+                ],
+                data: [['department', 'Department'], ['manager_id', 'Manager']]  // data is local
+            }),
+            valueField: 'entityColumn',
+            fieldLabel: 'Group By',
+            displayField: 'displayText',
+            triggerAction: 'all',
+            listeners: {
+                select: function(combo, record, index) {
+                    console.log("changed");
+                    var store = Ext.getStore('EmployeeStore');
+                    store.group(record[0].get('entityColumn'));
+                }
+            }
+        });
+
         Ext.applyIf(me, {
             items: [
                 {
@@ -39,7 +62,8 @@ Ext.define('CD.view.MainView', {
                                     itemId: 'addButton',
                                     icon: '<%= asset_path 'extjs/add.png' %>',
                                     text: 'Add Employee'
-                                }
+                                },
+                                cmbGroupingChoices
                             ]
                         }
                     ],

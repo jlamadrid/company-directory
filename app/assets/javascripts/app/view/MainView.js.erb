@@ -57,6 +57,11 @@ Ext.define('CD.view.MainView', {
                             bodyBorder: true,
                             forceFit: true,
                             store: 'EmployeeStore',
+
+                            features:[Ext.create('Ext.grid.feature.Grouping', {
+                                groupHeaderTpl: 'Department: {name} ({rows.length})'
+                            })],
+
                             columns: [
                                 /*
                                 {

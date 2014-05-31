@@ -22,6 +22,9 @@ Ext.define('CD.store.EmployeeStore', {
                     console.log("Employee Name: " + employee.get('fname') + " " + employee.get('lname'));
                 }
             },
+
+            groupField:'department',
+
             autoSync: true,
             model: 'CD.model.Employee',
             storeId: 'employeeStoreId',

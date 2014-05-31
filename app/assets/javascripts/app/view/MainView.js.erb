@@ -136,8 +136,10 @@ Ext.define('CD.view.MainView', {
                             tpl: [
                                 '<tpl if="values.id">',
                                 '    <h2>{lname}, {fname}</h2>',
-                                '    <h4>{title} ({department})</h4>',
-                                '    <p>{phone_cell}</p>',
+                                '    <p><b>Title/Dept:</b> &nbsp; {title} ({department})</p>',
+                                '    <p><b>Cell Phone:</b> &nbsp; {phone_cell}</p>',
+                                '    <p><b>Tags:</b> &nbsp; {tags}</p>',
+                                '    <p><b>Reports To:</b> &nbsp; {manager_id}</p>',
                                 '</tpl>',
                                 '',
                                 '<tpl if="!values.id">',

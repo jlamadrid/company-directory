@@ -5,8 +5,9 @@
 Ext.define('CD.view.MainView', {
     extend: 'Ext.container.Viewport',
 
-    requires: [
 
+    requires: [
+        'Ext.ux.RowExpander'
     ],
 
     id: 'mainView',
@@ -86,6 +87,9 @@ Ext.define('CD.view.MainView', {
                                 groupHeaderTpl: 'Department: {name} ({rows.length})'
                             })],
 
+                            collapsible: false,
+                            animCollapse: false,
+
                             columns: [
                                 /*
                                 {
@@ -147,9 +151,14 @@ Ext.define('CD.view.MainView', {
                                 */
                             ],
                             plugins: [
-                                Ext.create('Ext.grid.plugin.RowEditing', {
-
-                                })
+                                Ext.create('Ext.grid.plugin.RowEditing', {})
+                                /*,
+                                {
+                                    ptype: 'rowexpander',
+                                    rowBodyTpl : [
+                                        '<p>Company:</p>'
+                                    ]
+                                }*/
                             ]
                         },
                         {

@@ -16,3 +16,4 @@
 
 //path to extjs app code
 //= require_tree ./app
+//= require_tree ./ux

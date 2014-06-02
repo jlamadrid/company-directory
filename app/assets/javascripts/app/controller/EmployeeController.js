@@ -45,6 +45,10 @@ Ext.define('CD.controller.EmployeeController', {
 
             "#detailsPanel #removeButton": {
                 click: this.remove
+            },
+
+            "#employeeForm #cancelButton": {
+                click: this.cancelEdit
             }
 
         });
@@ -77,6 +81,14 @@ Ext.define('CD.controller.EmployeeController', {
 
         // Show window
         formWindow.show();
+
+    },
+
+    cancelEdit: function(target) {
+
+        // Get the window and close it
+        var formWindow = target.up("window");
+        formWindow.destroy();
 
     },
 

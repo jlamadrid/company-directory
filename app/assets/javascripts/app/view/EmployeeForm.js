@@ -69,7 +69,10 @@ Ext.define('CD.view.EmployeeForm', {
             name: 'tags',
             multiSelect: true,
             displayField: 'tag',
-            store: 'TagStoreInMemory'
+            store: 'TagStoreInMemory',
+            forceSelection: 'true',
+            typeAhead: true,
+            valueField: 'tag'
         });
 
         Ext.applyIf(me, {

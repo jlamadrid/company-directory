@@ -76,6 +76,7 @@ Ext.define('CD.controller.EmployeeController', {
             formWindow = Ext.create('widget.employeeform'),		// Create new form window
             form = formWindow.down('form').getForm();			// Get form within window
 
+        record.set('tags', record.get('tags').split(",")) ;
         // Load record model into form
         form.loadRecord(record);
 
@@ -104,6 +105,8 @@ Ext.define('CD.controller.EmployeeController', {
 
         // Update associated record with form values
         var errors = form.updateRecord();
+
+        record.set('tags', record.get('tags').join(",")) ;
 
         // Valid
         if (form.isValid()) {

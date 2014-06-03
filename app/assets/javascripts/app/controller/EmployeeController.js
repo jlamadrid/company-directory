@@ -176,10 +176,35 @@ Ext.define('CD.controller.EmployeeController', {
     view: function(target, record) {
 
         var details = this.getDetailsPanel(),	// Get detail panel via controller ref
-            toolbar = this.getDetailsToolbar();	// Get detail panel toolbar via controller ref
+            toolbar = this.getDetailsToolbar(),	// Get detail panel toolbar via controller ref
+            store = this.getEmployeeStoreStore(); //get the store
+
+        //lookup manager using the manager_id
+        var manager = store.findRecord('id', record.get('manager_id'));
+        var name = '';
+
+        //get the manager name
+        if(!manager){
+            name = 'none'
+        }else{
+            name = manager.get('lname') + ", " + manager.get('fname');
+        }
 
         // Update the detail panel with the selected row's data
-        details.update(record.data);
+        //details.update(record.data);
+
+        details.update({
+
+            id: record.get('id'),
+            fname: record.get('fname'),
+            lname: record.get('lname'),
+            title: record.get('title'),
+            department: record.get('department'),
+            phone_cell: record.get('phone_cell'),
+            tags: record.get('tags'),
+            manager: name
+
+        });
 
         // Show toolbar
         toolbar.show();

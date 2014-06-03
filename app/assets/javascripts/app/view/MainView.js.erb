@@ -5,9 +5,9 @@
 Ext.define('CD.view.MainView', {
     extend: 'Ext.container.Viewport',
 
-
     requires: [
-        'Ext.ux.RowExpander'
+        'Ext.ux.RowExpander',
+        'CD.view.DetailPanel'
     ],
 
     id: 'mainView',
@@ -162,58 +162,10 @@ Ext.define('CD.view.MainView', {
                             ]
                         },
                         {
-                            xtype: 'panel',
+                            xtype: 'detailPanel',
                             flex: 1,
                             region: 'center',
-                            split: true,
-                            border: '2 2 2 2',
-                            data: {
-
-                            },
-                            itemId: 'detailsPanel',
-                            tpl: [
-                                '<tpl if="values.id">',
-                                '    <h2>{lname}, {fname}</h2>',
-                                '    <p><b>Title/Dept:</b> &nbsp; {title} ({department})</p>',
-                                '    <p><b>Cell Phone:</b> &nbsp; {phone_cell}</p>',
-                                '    <p><b>Tags:</b> &nbsp; {tags}</p>',
-                                '    <p><b>Reports To:</b> &nbsp; {manager_id}</p>',
-                                '</tpl>',
-                                '',
-                                '<tpl if="!values.id">',
-                                '    <h3>Please select a record</h3>',
-                                '</tpl>'
-                            ],
-                            resizable: false,
-                            layout: 'fit',
-                            bodyBorder: true,
-                            bodyPadding: '10 10 10 10',
-                            manageHeight: false,
-                            dockedItems: [
-                                {
-                                    xtype: 'toolbar',
-                                    dock: 'top',
-                                    hidden: true,
-                                    itemId: 'detailsToolbar',
-                                    items: [
-                                        {
-                                            xtype: 'button',
-                                            itemId: 'editButton',
-                                            icon: '<%= asset_path 'extjs/edit.png' %>',
-                                            text: 'Edit'
-                                        },
-                                        {
-                                            xtype: 'tbseparator'
-                                        },
-                                        {
-                                            xtype: 'button',
-                                            itemId: 'removeButton',
-                                            icon: '<%= asset_path 'extjs/delete.png' %>',
-                                            text: 'Delete'
-                                        }
-                                    ]
-                                }
-                            ]
+                            split: true
                         }
                     ]
                 }

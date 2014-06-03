@@ -128,7 +128,20 @@ Ext.define('CD.controller.EmployeeController', {
             store.commitChanges();
 
             // Update detail panel
-            detailsPanel.update(record.data);
+            var name = this.lookupManager(record.get('manager_id'));
+            //detailsPanel.update(record.data);
+            detailsPanel.update({
+
+                id: record.get('id'),
+                fname: record.get('fname'),
+                lname: record.get('lname'),
+                title: record.get('title'),
+                department: record.get('department'),
+                phone_cell: record.get('phone_cell'),
+                tags: record.get('tags'),
+                manager: name
+
+            });
 
             // Close window
             formWindow.destroy();
@@ -176,19 +189,9 @@ Ext.define('CD.controller.EmployeeController', {
     view: function(target, record) {
 
         var details = this.getDetailsPanel(),	// Get detail panel via controller ref
-            toolbar = this.getDetailsToolbar(),	// Get detail panel toolbar via controller ref
-            store = this.getEmployeeStoreStore(); //get the store
+            toolbar = this.getDetailsToolbar();	// Get detail panel toolbar via controller ref
 
-        //lookup manager using the manager_id
-        var manager = store.findRecord('id', record.get('manager_id'));
-        var name = '';
-
-        //get the manager name
-        if(!manager){
-            name = 'none'
-        }else{
-            name = manager.get('lname') + ", " + manager.get('fname');
-        }
+        var name = this.lookupManager(record.get('manager_id'));
 
         // Update the detail panel with the selected row's data
         //details.update(record.data);
@@ -208,6 +211,25 @@ Ext.define('CD.controller.EmployeeController', {
 
         // Show toolbar
         toolbar.show();
+
+    },
+
+    lookupManager: function(manager_id) {
+
+        var store = this.getEmployeeStoreStore();
+
+        //lookup manager using the manager_id
+        var manager = store.findRecord('id', manager_id);
+        var name = '';
+
+        //get the manager name
+        if(!manager){
+            name = 'none'
+        }else{
+            name = manager.get('lname') + ", " + manager.get('fname');
+        }
+
+        return name;
 
     }
 

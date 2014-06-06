@@ -35,7 +35,7 @@ Ext.define('CD.controller.EmployeeController', {
                 click: this.cancelEdit
             },
 
-            "#gridPanel": {
+            "#employeeGridPanel": {
                 select: this.view
             },
 

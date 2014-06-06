@@ -7,6 +7,18 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+
+kimj = Employee.create(fname: 'Kim',
+                       lname: 'Jacques',
+                       title: 'CIO',
+                       department: 'IT',
+                       phone_cell: '201-555-6603',
+                       phone_home: '333-393-4100',
+                       phone_office: '973-301-3486',
+                       email: 'kjacques@philadelphiafinancial.com',
+                       is_manager: true,
+                       tags: 'cio')
+
 garyf = Employee.create(fname: 'Gary',
                         lname: 'Francis',
                         title: 'IT Manager',
@@ -16,7 +28,20 @@ garyf = Employee.create(fname: 'Gary',
                         phone_office: '473-401-3336',
                         email: 'gfrancis@philadelphiafinancial.com',
                         is_manager: true,
+                        manager_id: kimj.id,
                         tags: 'manager-apl, manager-java')
+
+Employee.create(fname: 'Joe',
+                lname: 'Catalfamo',
+                title: 'BA Manager',
+                department: 'IT',
+                phone_cell: '222-222-2222',
+                phone_home: '333-333-3333',
+                phone_office: '444-444-4444',
+                email: 'jcatalfamo@philadelphiafinancial.com',
+                is_manager: true,
+                manager_id: kimj.id,
+                tags: 'nightly_support, solar, manager-apl' )
 
 Employee.create(fname: 'Juan',
                 lname: 'Lamadrid',
@@ -28,18 +53,7 @@ Employee.create(fname: 'Juan',
                 email: 'jlamadrid@philadelphiafinancial.com',
                 is_manager: false,
                 manager_id: garyf.id,
-                tags: 'applications, fmdb')
-
-Employee.create(fname: 'Joe',
-                lname: 'Catalfamo',
-                title: 'Senior BA',
-                department: 'IT',
-                phone_cell: '222-222-2222',
-                phone_home: '333-333-3333',
-                phone_office: '444-444-4444',
-                email: 'jcatalfamo@philadelphiafinancial.com',
-                is_manager: true,
-                tags: 'nightly_support, solar')
+                tags: 'applications, fmdb, on_call')
 
 Employee.create(fname: 'Derryl',
                 lname: 'Varghese',
@@ -51,7 +65,67 @@ Employee.create(fname: 'Derryl',
                 email: 'dvarghese@philadelphiafinancial.com',
                 is_manager: false,
                 manager_id: garyf.id,
-                tags: 'applications, fmdb, reportal')
+                tags: 'applications, reportal')
+
+Employee.create(fname: 'Kathy',
+                lname: 'Iantosca',
+                title: 'Project Manager',
+                department: 'IT',
+                phone_cell: '201-555-6603',
+                phone_home: '333-393-4100',
+                phone_office: '973-301-3486',
+                email: 'kiantosca@philadelphiafinancial.com',
+                is_manager: false,
+                manager_id: kimj.id,
+                tags: 'pmo')
+
+Employee.create(fname: 'Bob',
+                lname: 'Consultant',
+                title: 'Citrix Consultant',
+                department: 'IT',
+                phone_cell: '201-555-6603',
+                phone_home: '333-393-4100',
+                phone_office: '973-301-3486',
+                email: 'bobc@philadelphiafinancial.com',
+                is_manager: false,
+                manager_id: kimj.id,
+                tags: 'citrix')
+
+#HR Employees
 
 
-#Tags provide the following ability: filter employees involved in specific tasks, initiatives, that have certain skill sets, etc
+
+kkilbane = Employee.create(fname: 'Ken',
+                lname: 'Kilbane',
+                title: 'HR Manager',
+                department: 'HR',
+                phone_cell: '201-555-6603',
+                phone_home: '333-393-4100',
+                phone_office: '973-301-3486',
+                email: 'kkilbane@philadelphiafinancial.com',
+                is_manager: true,
+                tags: 'hr')
+
+Employee.create(fname: 'Ally',
+                lname: 'Spaventa',
+                title: 'HR Generalist',
+                department: 'HR',
+                phone_cell: '201-555-6603',
+                phone_home: '333-393-4100',
+                phone_office: '973-301-3486',
+                email: 'aspaventa@philadelphiafinancial.com',
+                is_manager: false,
+                manager_id: kkilbane.id,
+                tags: 'on-boarding, new-hire')
+
+Employee.create(fname: 'Jane',
+                lname: 'Human',
+                title: 'HR Consultant',
+                department: 'HR',
+                phone_cell: '201-555-6603',
+                phone_home: '333-393-4100',
+                phone_office: '973-301-3486',
+                email: 'janeh@philadelphiafinancial.com',
+                is_manager: false,
+                manager_id: kkilbane.id,
+                tags: 'consultant')

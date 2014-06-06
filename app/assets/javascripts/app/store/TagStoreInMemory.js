@@ -24,7 +24,28 @@ Ext.define('CD.store.TagStoreInMemory', {
                     tag: 'manager-apl'
                 },
                 {
-                    tag: 'manager-apps'
+                    tag: 'manager-java'
+                },
+                {
+                    tag: 'nightly_support'
+                },
+                {
+                    tag: 'on_call'
+                },
+                {
+                    tag: 'fmdb'
+                },
+                {
+                    tag: 'reportal'
+                },
+                {
+                    tag: 'applications'
+                },
+                {
+                    tag: 'pmo'
+                },
+                {
+                    tag: 'citrix'
                 }
             ],
             proxy: {

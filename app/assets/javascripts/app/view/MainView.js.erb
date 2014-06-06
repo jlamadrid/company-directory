@@ -30,9 +30,9 @@ Ext.define('CD.view.MainView', {
             fieldLabel: 'Group By',
             displayField: 'displayText',
             triggerAction: 'all',
+            labelAlign: 'right',
             listeners: {
                 select: function(combo, record, index) {
-                    console.log("changed");
                     var store = Ext.getStore('EmployeeStore');
                     store.group(record[0].get('entityColumn'));
                 }
@@ -55,17 +55,49 @@ Ext.define('CD.view.MainView', {
                             dock: 'top',
                             itemId: 'mainToolbar',
                             items: [
+
                                 {
-                                    xtype: 'label'
+                                    xtype: 'textfield',
+                                    fieldLabel: 'Search Name:',
+                                    labelAlign: 'right',
+                                    listeners: {
+                                        change: function(field, newValue, oldValue) {
+                                            var store = Ext.getStore('EmployeeStore');
+                                            store.filterBy(function(record){
+                                                var fullName = record.get('fname') +  record.get('lname');
+                                                return fullName.indexOf(newValue) > -1
+                                            });
+                                        }
+                                    }
                                 },
+                                {
+                                    xtype: 'textfield',
+                                    fieldLabel: 'Search tags:',
+                                    labelAlign: 'right',
+                                    listeners: {
+                                        change: function(field, newValue, oldValue) {
+                                            var store = Ext.getStore('EmployeeStore');
+                                            store.filterBy(function(record){
+                                                return record.get('tags').indexOf(newValue) > -1
+                                            });
+                                        }
+                                    }
+                                },
+                                cmbGroupingChoices
+                            ]
+                        },
+                        {   xtype: 'toolbar',
+                            dock: 'bottom',
+                            itemId: 'bottomToolbar',
+                            items: [
                                 {
                                     xtype: 'button',
                                     itemId: 'addButton',
                                     icon: '<%= asset_path 'extjs/add.png' %>',
                                     text: 'Add Employee'
-                                },
-                                cmbGroupingChoices
+                                }
                             ]
+
                         }
                     ],
                     items: [

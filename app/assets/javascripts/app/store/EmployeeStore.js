@@ -25,7 +25,7 @@ Ext.define('CD.store.EmployeeStore', {
 
             groupField:'department',
 
-            autoSync: true,
+            autoSync: false,
             model: 'CD.model.Employee',
             storeId: 'employeeStoreId',
             proxy: {

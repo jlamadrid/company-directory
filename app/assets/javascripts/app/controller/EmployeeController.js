@@ -60,6 +60,8 @@ Ext.define('CD.controller.EmployeeController', {
             form = formWindow.down('form').getForm(),		// Get form within window
             model = Ext.create('model.employee',{});			// Create new Record model - alias: 'model.employee',
 
+        model.set('id','new-user');
+
         // Associate model with form
         form.loadRecord(model);
 
@@ -101,15 +103,16 @@ Ext.define('CD.controller.EmployeeController', {
             detailsToolbar = this.getDetailsToolbar(),	// Get detail panel toolbar
             record = form.getRecord(),					// Get record associated with form
             store = this.getEmployeeStoreStore(),	    // Get Employee store
-            isNew = !record.get('id');					// Is new if no record ID exists
-
-        // Update associated record with form values
-        var errors = form.updateRecord();
+            isNew = !record.get('id'),					// Is new if no record ID exists
+            values = form.getValues();
 
         record.set('tags', record.get('tags').join(",")) ;
 
         // Valid
         if (form.isValid()) {
+
+            // Update associated record with form values
+            var errors = form.updateRecord();
 
             // Add to store if new record
             if (isNew) {

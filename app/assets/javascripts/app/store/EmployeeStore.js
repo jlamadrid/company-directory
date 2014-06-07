@@ -33,7 +33,7 @@ Ext.define('CD.store.EmployeeStore', {
                 url: '/api/employees',
                 reader: {
                     type: 'json',
-                    root: 'data'
+                    rootProperty: 'data'
                 }
             }
         }, cfg)]);

@@ -6,7 +6,6 @@ Ext.define('CD.view.MainView', {
     extend: 'Ext.container.Viewport',
 
     requires: [
-        'Ext.ux.RowExpander',
         'CD.view.DetailPanel'
     ],
 
@@ -49,7 +48,7 @@ Ext.define('CD.view.MainView', {
             queryMode: 'local',
             id: 'cmbGroupingChoices',
             store: new Ext.data.ArrayStore({
-                id: 0,
+                //id: 0,
                 fields: [
                     'entityColumn',  // numeric value is the key
                     'displayText'
@@ -98,10 +97,15 @@ Ext.define('CD.view.MainView', {
                                     listeners: {
                                         change: function(field, newValue, oldValue) {
                                             var store = Ext.getStore('EmployeeStore');
-                                            store.filterBy(function(record){
-                                                var fullName = record.get('fname') +  record.get('lname');
-                                                return fullName.indexOf(newValue) > -1
-                                            });
+
+                                            if(!newValue || newValue.length <= 0){
+                                                store.clearFilter();
+                                            }else{
+                                                store.filterBy(function(record){
+                                                    var fullName = record.get('fname') +  record.get('lname');
+                                                    return fullName.indexOf(newValue) > -1
+                                                });
+                                            }
                                         }
                                     }
                                 },
@@ -112,9 +116,13 @@ Ext.define('CD.view.MainView', {
                                     listeners: {
                                         change: function(field, newValue, oldValue) {
                                             var store = Ext.getStore('EmployeeStore');
-                                            store.filterBy(function(record){
-                                                return record.get('tags').indexOf(newValue) > -1
-                                            });
+                                            if(!newValue || newValue.length <= 0){
+                                                store.clearFilter();
+                                            }else{
+                                                store.filterBy(function(record){
+                                                    return record.get('tags').indexOf(newValue) > -1
+                                                });
+                                            }
                                         }
                                     }
                                 },

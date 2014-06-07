@@ -9,13 +9,13 @@ Ext.define('CD.model.Employee', {
         'Ext.data.Field'
     ],
 
+    idProperty: 'id',
+
     fields: [
-        /*
         {
             name: 'id',
             type: 'int'
         },
-        */
         {
             name: 'fname'
         },

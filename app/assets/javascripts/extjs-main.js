@@ -11,7 +11,6 @@
 // about supported directives.
 
 // include the extjs dev debug file
-//= require ext-all-debug-w-comments
 //= require app
 
 //path to extjs app code

@@ -71,7 +71,7 @@ Ext.define('CD.view.EmployeeForm', {
             displayField: 'tag',
             store: 'TagStoreInMemory',
             forceSelection: 'true',
-            typeAhead: true,
+            //typeAhead: true,
             valueField: 'tag'
         });
 

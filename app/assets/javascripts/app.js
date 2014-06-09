@@ -1,3 +1,6 @@
+
+Ext.Loader.setPath('Ext.ux', 'assets/app/ux');
+
 Ext.application({
     name: 'CD',
     appFolder: 'assets/app',

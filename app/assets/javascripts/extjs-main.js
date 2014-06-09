@@ -11,6 +11,9 @@
 // about supported directives.
 
 // include the extjs dev debug file
+//= require ext-all-debug
+//= require ext-theme-neptune
+
 //= require app
 
 //path to extjs app code

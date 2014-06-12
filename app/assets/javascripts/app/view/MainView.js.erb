@@ -229,13 +229,14 @@ Ext.define('CD.view.MainView', {
                             ],
                             plugins: [
                                 Ext.create('Ext.grid.plugin.RowEditing', {})
-                                /*,
-                                {
+                                /*
+                                ,{
                                     ptype: 'rowexpander',
-                                    rowBodyTpl : [
-                                        '<p>Company:</p>'
-                                    ]
-                                }*/
+                                    rowBodyTpl : new Ext.XTemplate(
+                                            '{tags}'
+                                    )
+                                }
+                                */
                             ]
                         },
                         {

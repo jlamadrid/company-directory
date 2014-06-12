@@ -1,7 +1,7 @@
 /**
  * Created by Juan on 5/29/14.
  */
-Ext.define('CD.view.EmployeeForm', {
+Ext.define('CD.view.employee.EmployeeForm', {
     extend: 'Ext.window.Window',
     alias: 'widget.employeeform',
 

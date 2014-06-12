@@ -23,6 +23,10 @@ Ext.define('CD.view.employee.EmployeeForm', {
     initComponent: function() {
         var me = this;
 
+        /**
+         * We need to get all employees tagged as managers from the store in order to create the reports to
+         * drop down.
+         */
         var store = Ext.getStore('EmployeeStore');
 
         var managers = [];
@@ -32,50 +36,13 @@ Ext.define('CD.view.employee.EmployeeForm', {
             }
         });
 
-        var comboStore =  Ext.create('Ext.data.Store', {
+        var managerStore =  Ext.create('Ext.data.Store', {
             model: 'CD.model.Employee',
             data : managers
         });
 
-        //The combo box listing managers
-        var cmbManager = Ext.create('Ext.form.ComboBox', {
-
-            fieldLabel: 'Manager',
-            name: 'manager_id',
-            store: comboStore,
-            queryMode: 'local',
-            valueField: 'id',
-            emptyText: 'Reports to ...',
-
-            // Template for the dropdown menu.
-            // Note the use of "x-boundlist-item" class,
-            // this is required to make the items selectable.
-            tpl: Ext.create('Ext.XTemplate',
-                '<tpl for=".">',
-                '<div class="x-boundlist-item">{fname} {lname}</div>',
-                '</tpl>'
-            ),
-
-            // template for the content inside text field
-            displayTpl: Ext.create('Ext.XTemplate',
-                '<tpl for=".">',
-                '{fname} {lname}',
-                '</tpl>'
-            )
-        });
-
-        var cmbTags = Ext.create('Ext.form.field.ComboBox', {
-            fieldLabel: 'Tags',
-            name: 'tags',
-            multiSelect: true,
-            displayField: 'tag',
-            store: 'TagStoreInMemory',
-            forceSelection: 'true',
-            //typeAhead: true,
-            valueField: 'tag'
-        });
-
         Ext.applyIf(me, {
+
             bodyStyle: {
                 'background-color': '#fff'
             },
@@ -186,7 +153,31 @@ Ext.define('CD.view.employee.EmployeeForm', {
                                     labelAlign: 'right',
                                     name: 'department'
                                 },
-                                cmbManager
+                                {
+                                    xtype: 'combobox',
+                                    fieldLabel: 'Manager',
+                                    name: 'manager_id',
+                                    store: managerStore,
+                                    queryMode: 'local',
+                                    valueField: 'id',
+                                    emptyText: 'Reports to ...',
+
+                                    // Template for the dropdown menu.
+                                    // Note the use of "x-boundlist-item" class,
+                                    // this is required to make the items selectable.
+                                    tpl: Ext.create('Ext.XTemplate',
+                                        '<tpl for=".">',
+                                        '<div class="x-boundlist-item">{fname} {lname}</div>',
+                                        '</tpl>'
+                                    ),
+
+                                    // template for the content inside text field
+                                    displayTpl: Ext.create('Ext.XTemplate',
+                                        '<tpl for=".">',
+                                        '{fname} {lname}',
+                                        '</tpl>'
+                                    )
+                                }
                             ]
                         },
                         {
@@ -225,11 +216,28 @@ Ext.define('CD.view.employee.EmployeeForm', {
                         {
                             xtype: 'fieldset',
                             title: 'About',
-                            defaultType: 'textfield',
                             margin: '0 0 5 0',
 
                             items: [
-                                cmbTags
+                                {
+                                    xtype: 'combobox',
+                                    fieldLabel: 'Tags',
+                                    name: 'tags',
+                                    width: 450,
+                                    multiSelect: true,
+                                    displayField: 'tag',
+                                    store: 'TagStoreInMemory',
+                                    forceSelection: 'true',
+                                    //typeAhead: true,
+                                    valueField: 'tag',
+
+                                    tpl: Ext.create('Ext.XTemplate',
+                                        '<tpl for=".">',
+                                        '<div class="x-boundlist-item"><b>{tag}: </b><i> {description}</i><hr/></div>',
+                                        '</tpl>'
+                                    )
+                                }
+
                             ]
                         },
                         {

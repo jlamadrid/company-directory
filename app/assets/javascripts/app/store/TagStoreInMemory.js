@@ -18,34 +18,44 @@ Ext.define('CD.store.TagStoreInMemory', {
             autoLoad: 'true',
             data: [
                 {
-                    tag: 'solar'
+                    tag: 'solar',
+                    description: 'any involvement with solar'
                 },
                 {
-                    tag: 'manager-apl'
+                    tag: 'manager-apl',
+                    description: 'managers responsible for resources working on apl related applications: solar, frs, etc'
                 },
                 {
-                    tag: 'manager-java'
+                    tag: 'manager-java',
+                    description: 'managers responsible for resources working on java related applications: fmdb, reportal, etc'
                 },
                 {
-                    tag: 'nightly_support'
+                    tag: 'nightly_support',
+                    description: 'individuals assigned to support night time operations.'
                 },
                 {
-                    tag: 'on_call'
+                    tag: 'on_call',
+                    description: 'individuals on call.'
                 },
                 {
-                    tag: 'fmdb'
+                    tag: 'fmdb',
+                    description: 'application that manages fund data for marketing, etc'
                 },
                 {
-                    tag: 'reportal'
+                    tag: 'reportal',
+                    description: 'application that provides reports to brokers, clients, etc'
                 },
                 {
-                    tag: 'applications'
+                    tag: 'applications',
+                    description: 'any individual that provides application support'
                 },
                 {
-                    tag: 'pmo'
+                    tag: 'pmo',
+                    description: 'any individual working within pmo'
                 },
                 {
-                    tag: 'citrix'
+                    tag: 'citrix',
+                    description: 'any individual that provides citrix support'
                 }
             ],
             proxy: {

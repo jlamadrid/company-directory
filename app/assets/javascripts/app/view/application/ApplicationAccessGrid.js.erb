@@ -1,3 +1,6 @@
+/**
+ * For ideas: http://localhost:8000/build/examples/restful/restful.js
+ */
 Ext.define('CD.view.application.ApplicationAccessGrid', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.applicationAccessGrid',
@@ -8,13 +11,28 @@ Ext.define('CD.view.application.ApplicationAccessGrid', {
     initComponent: function() {
         var me = this;
 
-        me.cellEditing = new Ext.grid.plugin.CellEditing({
-            clicksToEdit: 1
+        var rowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
+
+            listeners: {
+                cancelEdit: function(rowEditing, context) {
+                    // Canceling editing of a locally added, unsaved record: remove it
+                    if (context.record.phantom) {
+                        store.remove(context.record);
+                    }
+                }
+            }
+        });
+
+        /**
+         * enable/disable delete button based on selected rows
+         */
+        me.getSelectionModel().on('selectionchange', function(selModel, selections){
+            me.down('#delete').setDisabled(selections.length === 0);
         });
 
         Ext.applyIf(me, {
 
-            plugins: [this.cellEditing],
+            plugins: [rowEditing],
 
             columns: [
                 {
@@ -35,23 +53,21 @@ Ext.define('CD.view.application.ApplicationAccessGrid', {
                 }
             ],
 
-            selModel: {
-                selType: 'cellmodel'
-            },
-
-            dockedItems: [
-                {
-                    xtype: 'toolbar',
-                    dock: 'bottom',
-                    itemId: 'bottomToolbar',
-                    items: [
-                        {
-                            xtype: 'button',
-                            text: 'Add Grant'
+            dockedItems: [{
+                xtype: 'toolbar',
+                items: [{
+                    itemId: 'delete',
+                    text: 'Delete',
+                    icon: '<%= asset_path 'extjs/delete.png' %>',
+                    disabled: true,
+                    handler: function(){
+                        var selection = me.getView().getSelectionModel().getSelection()[0];
+                        if (selection) {
+                            me.getStore().remove(selection);
                         }
-                    ]
-                }
-            ]
+                    }
+                }]
+            }]
         });
 
         me.callParent(arguments);

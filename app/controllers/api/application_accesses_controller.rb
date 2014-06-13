@@ -2,7 +2,7 @@ module Api
 
   class ApplicationAccessesController < ApplicationController
 
-    before_action :set_application_accesses, only: [:show, :update]
+    before_action :set_application_accesses, only: [:show, :update, :destroy]
     respond_to :json
 
     def index
@@ -39,6 +39,14 @@ module Api
         render :json => { :success => true }
       else
         render :json => { :success => false, :errors => @application_access.errors }, :status => :unprocessable_entity
+      end
+    end
+
+    def destroy
+      if @application_access.destroy
+        render :json => { :success => true }
+      else
+        render :json => { :success => false }
       end
     end
 

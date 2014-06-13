@@ -17,6 +17,19 @@ module Api
       render json: @application_access
     end
 
+
+    #POST
+    def create
+
+      @application_access = ApplicationAccess.new(access_params)
+
+      if @application_access.save
+        render :json => { :success => true, :data => @application_access }, :status => :created
+      else
+        render :json => { :success => false, :errors => @application_access.errors }, :status => :unprocessable_entity
+      end
+    end
+
     def update
 
       @application_access.attributes = access_params

@@ -19,7 +19,7 @@ Ext.define('CD.store.ApplicationAccessStore', {
                 }
             },
             */
-            autoSync: false,
+            autoSync: true,
             model: 'CD.model.ApplicationAccess',
             storeId: 'applicationAccessStoreId',
             proxy: {

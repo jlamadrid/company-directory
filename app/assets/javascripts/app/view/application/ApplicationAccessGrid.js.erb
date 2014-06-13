@@ -8,16 +8,20 @@ Ext.define('CD.view.application.ApplicationAccessGrid', {
     initComponent: function() {
         var me = this;
 
+        me.cellEditing = new Ext.grid.plugin.CellEditing({
+            clicksToEdit: 1
+        });
+
         Ext.applyIf(me, {
+
+            plugins: [this.cellEditing],
+
             columns: [
                 {
                     xtype: 'gridcolumn',
                     dataIndex: 'name',
                     width: 250,
-                    text: 'Name',
-                    editor: {
-                        xtype: 'textfield'
-                    }
+                    text: 'Name'
                 },
                 {
                     xtype: 'gridcolumn',
@@ -25,10 +29,16 @@ Ext.define('CD.view.application.ApplicationAccessGrid', {
                     dataIndex: 'description',
                     text: 'Description',
                     editor: {
-                        xtype: 'textfield'
+                        xtype: 'textfield',
+                        allowBlank: false
                     }
                 }
             ],
+
+            selModel: {
+                selType: 'cellmodel'
+            },
+
             dockedItems: [
                 {
                     xtype: 'toolbar',

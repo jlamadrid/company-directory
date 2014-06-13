@@ -13,6 +13,7 @@ Ext.define('CD.view.application.ApplicationAccessGrid', {
                 {
                     xtype: 'gridcolumn',
                     dataIndex: 'name',
+                    width: 250,
                     text: 'Name',
                     editor: {
                         xtype: 'textfield'
@@ -26,6 +27,19 @@ Ext.define('CD.view.application.ApplicationAccessGrid', {
                     editor: {
                         xtype: 'textfield'
                     }
+                }
+            ],
+            dockedItems: [
+                {
+                    xtype: 'toolbar',
+                    dock: 'bottom',
+                    itemId: 'bottomToolbar',
+                    items: [
+                        {
+                            xtype: 'button',
+                            text: 'Add Grant'
+                        }
+                    ]
                 }
             ]
         });

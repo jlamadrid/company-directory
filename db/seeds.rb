@@ -6,8 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
-
+#IT employees
 kimj = Employee.create(fname: 'Kim',
                        lname: 'Jacques',
                        title: 'CIO',
@@ -127,23 +126,69 @@ Employee.create(fname: 'Jane',
                 manager_id: kkilbane.id,
                 tags: 'consultant')
 
+#Finance employees
 
+garys = Employee.create(fname: 'Gary',
+                        lname: 'Strunk',
+                        title: 'Finance Lead',
+                        department: 'Finance',
+                        phone_cell: '201-555-6603',
+                        phone_home: '333-393-4100',
+                        phone_office: '973-301-3486',
+                        email: 'garys@philadelphiafinancial.com',
+                        is_manager: true,
+                        tags: 'finance, accounting, monthly-close')
+
+Employee.create(fname: 'Penny',
+                lname: 'Hrib',
+                title: 'Finance Analyst',
+                department: 'Finance',
+                phone_cell: '201-555-6603',
+                phone_home: '333-393-4100',
+                phone_office: '973-301-3486',
+                email: 'garys@philadelphiafinancial.com',
+                is_manager: false,
+                manager_id: garys.id,
+                tags: 'finance, accounting')
+
+#Applications
 solar = Application.create(name: 'Solar',
-                   app_type: 'Desktop',
-                   description: 'Primary admin system managing our COLI block of business ......')
+                           app_type: 'Desktop',
+                           description: 'Primary admin system managing our COLI block of business ......')
 
 fmdb = Application.create(name: 'FMDB',
-                   app_type: 'Web',
-                   description: 'System used to enter fund data ......')
+                           app_type: 'Web',
+                           description: 'System used to enter fund data ......')
 
 jira = Application.create(name: 'JIRA',
-                   app_type: 'Web',
-                   description: 'System used for entering support tickets')
+  app_type: 'Web',
+  description: 'System used for entering support tickets')
+
+#application grants
+solar.application_accesses.create(
+  name: 'library 100',
+  description: 'allow processing of the following business cases BOA, WF, etc')
 
 solar.application_accesses.create(
-    name: 'library 100',
-    description: 'allow processing of the following business cases BOA, WF, etc')
+  name: 'library 300',
+  description: 'allow processing of the following business cases ML, JPM, etc')
 
 fmdb.application_accesses.create(
-    name: 'admin',
-    description: 'allow admin access to create, update, or delete fund data')
+  name: 'admin',
+  description: 'allow admin access to create, update, or delete fund data')
+
+fmdb.application_accesses.create(
+  name: 'read_only',
+  description: 'allow access to read fund data')
+
+jira.application_accesses.create(
+  name: 'create_solar_tickets',
+  description: 'allow access to create solar tickets')
+
+jira.application_accesses.create(
+  name: 'create_fmdb_tickets',
+  description: 'allow access to create fmdb tickets')
+
+jira.application_accesses.create(
+  name: 'jira_admin',
+  description: 'allow access to create new jira projects and workflows')

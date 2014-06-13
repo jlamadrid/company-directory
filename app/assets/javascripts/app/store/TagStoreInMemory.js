@@ -56,6 +56,18 @@ Ext.define('CD.store.TagStoreInMemory', {
                 {
                     tag: 'citrix',
                     description: 'any individual that provides citrix support'
+                },
+                {
+                    tag: 'finance',
+                    description: 'any individual that provides finance support'
+                },
+                {
+                    tag: 'accounting',
+                    description: 'any individual that provides accounting support'
+                },
+                {
+                    tag: 'monthly-close',
+                    description: 'any individual involved in monthly close'
                 }
             ],
             proxy: {

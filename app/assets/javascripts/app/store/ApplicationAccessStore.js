@@ -11,12 +11,14 @@ Ext.define('CD.store.ApplicationAccessStore', {
         var me = this;
         cfg = cfg || {};
         me.callParent([Ext.apply({
+            autoLoad: false,
+            /*
             autoLoad: {
                 callback: function(){
                     console.log('Autoload application access store ');
                 }
             },
-
+            */
             autoSync: false,
             model: 'CD.model.ApplicationAccess',
             storeId: 'applicationAccessStoreId',

@@ -35,7 +35,11 @@ Ext.define('CD.controller.EmployeeController', {
                 click: this.cancelEdit
             },
 
-            "#employeeGridPanel": {
+            "#applicationGridItemId": {
+                select: this.applicationSelected
+            },
+
+            "#employeeGridPanelItemId": {
                 select: this.view
             },
 
@@ -207,6 +211,17 @@ Ext.define('CD.controller.EmployeeController', {
         // Show toolbar
         toolbar.show();
 
+    },
+
+    applicationSelected: function(target, record) {
+
+        var application_id = record.get('id');
+
+        //filter application access store by application id
+        var store = Ext.getStore('ApplicationAccessStore');
+        store.load();
+
+        store.filter('application_id', application_id);
     },
 
     lookupManager: function(manager_id) {

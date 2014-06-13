@@ -26,15 +26,15 @@ Ext.define('CD.store.TagStoreInMemory', {
                     description: 'managers responsible for resources working on apl related applications: solar, frs, etc'
                 },
                 {
-                    tag: 'manager-java',
-                    description: 'managers responsible for resources working on java related applications: fmdb, reportal, etc'
+                    tag: 'manager-applications',
+                    description: 'managers responsible for resources working on applications: fmdb, reportal, etc'
                 },
                 {
-                    tag: 'nightly_support',
+                    tag: 'nightly-support',
                     description: 'individuals assigned to support night time operations.'
                 },
                 {
-                    tag: 'on_call',
+                    tag: 'on-call',
                     description: 'individuals on call.'
                 },
                 {

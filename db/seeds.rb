@@ -29,7 +29,7 @@ garyf = Employee.create(fname: 'Gary',
                         email: 'gfrancis@philadelphiafinancial.com',
                         is_manager: true,
                         manager_id: kimj.id,
-                        tags: 'manager-apl, manager-java')
+                        tags: 'manager-apl, manager-applications')
 
 Employee.create(fname: 'Joe',
                 lname: 'Catalfamo',
@@ -41,7 +41,7 @@ Employee.create(fname: 'Joe',
                 email: 'jcatalfamo@philadelphiafinancial.com',
                 is_manager: true,
                 manager_id: kimj.id,
-                tags: 'nightly_support, solar, manager-apl' )
+                tags: 'nightly-support, solar, manager-apl' )
 
 Employee.create(fname: 'Juan',
                 lname: 'Lamadrid',
@@ -53,7 +53,7 @@ Employee.create(fname: 'Juan',
                 email: 'jlamadrid@philadelphiafinancial.com',
                 is_manager: false,
                 manager_id: garyf.id,
-                tags: 'applications, fmdb, on_call')
+                tags: 'applications, fmdb, on-call')
 
 Employee.create(fname: 'Derryl',
                 lname: 'Varghese',
@@ -92,9 +92,6 @@ Employee.create(fname: 'Bob',
                 tags: 'citrix')
 
 #HR Employees
-
-
-
 kkilbane = Employee.create(fname: 'Ken',
                 lname: 'Kilbane',
                 title: 'HR Manager',
@@ -129,3 +126,24 @@ Employee.create(fname: 'Jane',
                 is_manager: false,
                 manager_id: kkilbane.id,
                 tags: 'consultant')
+
+
+solar = Application.create(name: 'Solar',
+                   app_type: 'Desktop',
+                   description: 'Primary admin system managing our COLI block of business ......')
+
+fmdb = Application.create(name: 'FMDB',
+                   app_type: 'Web',
+                   description: 'System used to enter fund data ......')
+
+jira = Application.create(name: 'JIRA',
+                   app_type: 'Web',
+                   description: 'System used for entering support tickets')
+
+solar.application_accesses.create(
+    name: 'library 100',
+    description: 'allow processing of the following business cases BOA, WF, etc')
+
+fmdb.application_accesses.create(
+    name: 'admin',
+    description: 'allow admin access to create, update, or delete fund data')

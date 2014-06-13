@@ -60,6 +60,7 @@ CompanyDirectory::Application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
 
     resources :employees
+    resources :applications
 
   end
 end

@@ -15,7 +15,8 @@ Ext.application({
 
     stores: [
         'EmployeeStore',
-        'TagStoreInMemory'
+        'TagStoreInMemory',
+        'ApplicationStore'
     ],
 
     controllers: [

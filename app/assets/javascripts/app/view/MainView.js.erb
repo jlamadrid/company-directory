@@ -18,29 +18,39 @@ Ext.define('CD.view.MainView', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'panel',
-                    itemId: 'mainPanel',
-                    resizable: false,
-                    layout: 'border',
-                    collapsed: false,
-                    manageHeight: false,
-                    title: 'Employees',
+                    xtype: 'tabpanel',
+                    activeTab: 0,
                     items: [
                         {
-                            xtype: 'employeeGrid',
-                            flex: 1,
-                            region: 'west',
-                            split: true
+                            xtype: 'panel',
+                            title: 'Employees',
+                            itemId: 'mainPanel',
+                            resizable: false,
+                            layout: 'border',
+                            collapsed: false,
+                            manageHeight: false,
+                            title: 'Employees',
+                            items: [
+                                {
+                                    xtype: 'employeeGrid',
+                                    flex: 1,
+                                    region: 'west',
+                                    split: true
+                                },
+                                {
+                                    xtype: 'detailPanel',
+                                    flex: 1,
+                                    region: 'center',
+                                    split: true
+                                }
+                            ]
                         },
                         {
-                            xtype: 'detailPanel',
-                            flex: 1,
-                            region: 'center',
-                            split: true
+                            xtype: 'applicationGrid',
+                            flex: 1
                         }
                     ]
                 }
-
             ]
         });
 

@@ -175,7 +175,8 @@ solar.application_accesses.create(
 
 fmdb.application_accesses.create(
   name: 'admin',
-  description: 'allow admin access to create, update, or delete fund data')
+  description: 'allow admin access to create, update, or delete fund data; users should expect this
+                access when working in the marketing dept and expected to interact with fund managers collecting fund data.')
 
 fmdb.application_accesses.create(
   name: 'read_only',

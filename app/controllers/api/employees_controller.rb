@@ -40,7 +40,7 @@ module Api
       if @employee.save
         render :json => { :success => true }
       else
-        format.json { render :json => { :success => false, :errors => @employee.errors }, :status => :unprocessable_entity }
+        render :json => { :success => false, :errors => @employee.errors }, :status => :unprocessable_entity
       end
     end
 

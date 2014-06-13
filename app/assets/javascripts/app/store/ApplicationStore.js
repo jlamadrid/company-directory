@@ -27,7 +27,7 @@ Ext.define('CD.store.ApplicationStore', {
                 url: '/api/applications',
                 reader: {
                     type: 'json',
-                    rootProperty: 'data'
+                    rootProperty: 'applications'
                 }
             }
         }, cfg)]);

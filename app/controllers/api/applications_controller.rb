@@ -10,12 +10,13 @@ module Api
 
       @applications = Application.all
 
-      render :json => { :success => true, :data =>  @applications }
+      #render :json => { :success => true, :data =>  @applications }
+      render json: @applications
     end
 
     #GET http://server:port/api/employees/1
     def show
-      render :json => { :success => true, :data => @application }
+      render json: @application
     end
 
 

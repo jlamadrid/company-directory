@@ -24,5 +24,15 @@ Ext.define('CD.model.Application', {
             name: 'updated_at',
             type: 'date'
         }
+    ],
+
+    hasMany: [
+        {
+            name: 'applicationAccess', //creates the getter getApplicationAccess
+            model: 'CD.model.ApplicationAccess',
+            associationKey: 'applicationAccess'
+        }
     ]
+
+    //hasMany: 'ApplicationAccess' /* generates applicationAccess() method on every Application instance */
 });

@@ -16,6 +16,14 @@ Ext.define('CD.store.ApplicationStore', {
                     console.log('Autoload application store ');
                     var application = this.first();
                     console.log("Name: " + application.get('name') + " " + application.get('description'));
+                    console.log(application.applicationAccess().getCount());
+
+                    application.applicationAccess().each(function(appAccess){
+                        var access = appAccess;
+                        var app = access.getApplication();
+
+                        console.log(app);
+                    });
                 }
             },
 

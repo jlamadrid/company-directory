@@ -14,6 +14,9 @@ Ext.define('CD.model.Resource', {
             name: 'resource_type'
         },
         {
+            name: 'tags'
+        },
+        {
             name: 'description'
         },
         {

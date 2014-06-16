@@ -13,6 +13,7 @@ Ext.define('CD.view.resource.ResourceGrid', {
             columns: [
                 {
                     xtype: 'gridcolumn',
+                    width: 250,
                     dataIndex: 'name',
                     text: 'Name',
                     editor: {
@@ -35,6 +36,37 @@ Ext.define('CD.view.resource.ResourceGrid', {
                     editor: {
                         xtype: 'textfield'
                     }
+                }
+            ],
+
+            dockedItems: [
+                {
+                    xtype: 'toolbar',
+                    dock: 'top',
+                    items: [
+                        {
+                            xtype: 'textfield',
+                            fieldLabel: 'Search tags:',
+                            labelAlign: 'right',
+                            listeners: {
+                                change: function(field, newValue, oldValue) {
+                                    var store = Ext.getStore('ResourceStore');
+                                    if(!newValue || newValue.length <= 0){
+                                        store.clearFilter();
+                                    }else{
+                                        store.filterBy(function(record){
+                                            if(record.get('tags')){
+                                                return record.get('tags').indexOf(newValue) > -1
+                                            }else{
+                                                false
+                                            }
+
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                    ]
                 }
             ]
         });

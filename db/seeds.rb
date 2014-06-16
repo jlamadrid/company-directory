@@ -168,9 +168,9 @@ Application.create(name: 'JIRA',
 app_solar = Resource.create(
     resource_type: 'application',
     name: 'Solar',
-    description: 'Main admin system'
+    description: 'Main admin system',
+    tags: 'solar'
 )
-
 
 app_solar.resource_accesses.create(
     name: 'library 100',
@@ -186,7 +186,8 @@ app_solar.resource_accesses.create(
 app_fmdb = Resource.create(
     resource_type: 'application',
     name: 'FMDB',
-    description: 'Main fund system'
+    description: 'Main fund system',
+    tags: 'fmdb'
 )
 
 app_fmdb.resource_accesses.create(
@@ -202,7 +203,8 @@ app_fmdb.resource_accesses.create(
 app_jira = Resource.create(
     resource_type: 'application',
     name: 'JIRA',
-    description: 'Main ticket system'
+    description: 'Main ticket system',
+    tags: 'jira'
 )
 
 app_jira.resource_accesses.create(
@@ -225,7 +227,8 @@ app_jira.resource_accesses.create(
 email_group_solar = Resource.create(
     resource_type: 'email group',
     name: 'solar_admin',
-    description: 'users that need notifications about solar events'
+    description: 'users that need notifications about solar events',
+    tags: 'solar'
 )
 
 email_group_solar.resource_accesses.create(
@@ -253,7 +256,8 @@ email_group_nightly_batch.resource_accesses.create(
 email_group_first_floor_east_batch = Resource.create(
     resource_type: 'email group',
     name: 'first-floor-east',
-    description: 'users sitting in ...'
+    description: 'users sitting in ...',
+    tags: 'policy admin'
 )
 
 email_group_first_floor_east_batch.resource_accesses.create(
@@ -267,8 +271,9 @@ email_group_first_floor_east_batch.resource_accesses.create(
 # ---
 network_nightly_batch = Resource.create(
     resource_type: 'network',
-    name: 'nightly-batch',
-    description: 'directories for nightly batch operations'
+    name: 'solar-nightly-batch',
+    description: 'directories for solar nightly batch operations',
+    tags: 'solar'
 )
 
 network_nightly_batch.resource_accesses.create(
@@ -279,12 +284,12 @@ network_nightly_batch.resource_accesses.create(
     name: 'update',
     description: 'users needing read and UPDATE access to nightly batch directories')
 
-
 # ---
 network_fund_reports = Resource.create(
     resource_type: 'network',
-    name: 'fund-reports',
-    description: 'users needing access to fund reports directories'
+    name: 'solar-fund-reports',
+    description: 'users needing access to solar fund reports directories',
+    tags: 'solar'
 )
 
 network_fund_reports.resource_accesses.create(
@@ -293,4 +298,18 @@ network_fund_reports.resource_accesses.create(
 
 
 # ---
+fmdb_directories = Resource.create(
+    resource_type: 'network',
+    name: 'fmdb-directories',
+    description: 'directories for fmdb operations',
+    tags: 'fmdb'
+)
+
+fmdb_directories.resource_accesses.create(
+    name: 'read_only',
+    description: 'users needing read access to fmdb directories')
+
+fmdb_directories.resource_accesses.create(
+    name: 'delete',
+    description: 'users needing delete access to fmdb directories')
 

@@ -61,7 +61,8 @@ CompanyDirectory::Application.routes.draw do
 
     resources :employees
     resources :applications
-    resources :application_accesses
+    resources :resources
+    resources :resource_accesses
 
   end
 end

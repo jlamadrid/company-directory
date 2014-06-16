@@ -11,18 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140612191235) do
+ActiveRecord::Schema.define(version: 20140614122427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "application_accesses", force: true do |t|
-    t.integer  "application_id"
-    t.string   "description"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "applications", force: true do |t|
     t.string   "name"
@@ -43,6 +35,23 @@ ActiveRecord::Schema.define(version: 20140612191235) do
     t.string   "phone_home"
     t.string   "phone_office"
     t.string   "email"
+    t.string   "tags"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resource_accesses", force: true do |t|
+    t.integer  "resource_id"
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resources", force: true do |t|
+    t.string   "resource_type"
+    t.string   "name"
+    t.text     "description"
     t.string   "tags"
     t.datetime "created_at"
     t.datetime "updated_at"

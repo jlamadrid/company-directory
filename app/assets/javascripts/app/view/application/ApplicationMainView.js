@@ -17,20 +17,6 @@ Ext.define('CD.view.application.ApplicationMainView', {
                 {
                     xtype: 'applicationGrid',
                     region: 'center'
-                },
-                {
-                    xtype: 'tabpanel',
-                    region: 'south',
-                    height: 150,
-                    activeTab: 0,
-                    resizable: true,
-                    height: 450,
-                    items: [
-                        {
-                            xtype: 'applicationAccessGrid',
-                            title: 'Grants'
-                        }
-                    ]
                 }
             ]
         });

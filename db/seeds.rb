@@ -152,44 +152,145 @@ Employee.create(fname: 'Penny',
                 tags: 'finance, accounting')
 
 #Applications
-solar = Application.create(name: 'Solar',
+Application.create(name: 'Solar',
                            app_type: 'Desktop',
                            description: 'Primary admin system managing our COLI block of business ......')
 
-fmdb = Application.create(name: 'FMDB',
+Application.create(name: 'FMDB',
                            app_type: 'Web',
                            description: 'System used to enter fund data ......')
 
-jira = Application.create(name: 'JIRA',
+Application.create(name: 'JIRA',
   app_type: 'Web',
   description: 'System used for entering support tickets')
 
-#application grants
-solar.application_accesses.create(
-  name: 'library 100',
-  description: 'allow processing of the following business cases BOA, WF, etc')
+# ---
+app_solar = Resource.create(
+    resource_type: 'application',
+    name: 'Solar',
+    description: 'Main admin system'
+)
 
-solar.application_accesses.create(
-  name: 'library 300',
-  description: 'allow processing of the following business cases ML, JPM, etc')
 
-fmdb.application_accesses.create(
-  name: 'admin',
-  description: 'allow admin access to create, update, or delete fund data; users should expect this
+app_solar.resource_accesses.create(
+    name: 'library 100',
+    description: 'allow processing of the following business cases BOA, WF, etc'
+)
+
+app_solar.resource_accesses.create(
+    name: 'library 300',
+    description: 'allow processing of the following business cases ML, JPM, etc')
+
+# ---
+
+app_fmdb = Resource.create(
+    resource_type: 'application',
+    name: 'FMDB',
+    description: 'Main fund system'
+)
+
+app_fmdb.resource_accesses.create(
+    name: 'admin',
+    description: 'allow admin access to create, update, or delete fund data; users should expect this
                 access when working in the marketing dept and expected to interact with fund managers collecting fund data.')
 
-fmdb.application_accesses.create(
-  name: 'read_only',
-  description: 'allow access to read fund data')
+app_fmdb.resource_accesses.create(
+    name: 'read_only',
+    description: 'allow access to read fund data')
 
-jira.application_accesses.create(
-  name: 'create_solar_tickets',
-  description: 'allow access to create solar tickets')
+# ---
+app_jira = Resource.create(
+    resource_type: 'application',
+    name: 'JIRA',
+    description: 'Main ticket system'
+)
 
-jira.application_accesses.create(
-  name: 'create_fmdb_tickets',
-  description: 'allow access to create fmdb tickets')
+app_jira.resource_accesses.create(
+    name: 'create_fmdb_tickets',
+    description: 'allow access to create fmdb tickets')
 
-jira.application_accesses.create(
-  name: 'jira_admin',
-  description: 'allow access to create new jira projects and workflows')
+app_jira.resource_accesses.create(
+    name: 'jira_admin',
+    description: 'allow access to create new jira projects and workflows')
+
+
+app_jira.resource_accesses.create(
+    name: 'create_solar_tickets',
+    description: 'allow access to create solar tickets')
+# ---
+
+
+#EMAIL GROUP RESOURCES
+# ---
+email_group_solar = Resource.create(
+    resource_type: 'email group',
+    name: 'solar_admin',
+    description: 'users that need notifications about solar events'
+)
+
+email_group_solar.resource_accesses.create(
+    name: 'weekly_solar_update',
+    description: 'receive weekly updates')
+
+# ---
+
+email_group_nightly_batch = Resource.create(
+    resource_type: 'email group',
+    name: 'nightly_batch',
+    description: 'users that need notifications on nightly batch activity'
+)
+
+email_group_nightly_batch.resource_accesses.create(
+    name: 'include_nightly',
+    description: 'receive nightly batch emails')
+
+email_group_nightly_batch.resource_accesses.create(
+    name: 'include_weekly',
+    description: 'receive weekly summary report emails')
+# ---
+
+
+email_group_first_floor_east_batch = Resource.create(
+    resource_type: 'email group',
+    name: 'first-floor-east',
+    description: 'users sitting in ...'
+)
+
+email_group_first_floor_east_batch.resource_accesses.create(
+    name: 'include',
+    description: 'include in emails to first floow east')
+# ---
+
+
+# NETWORK RESOURCES
+
+# ---
+network_nightly_batch = Resource.create(
+    resource_type: 'network',
+    name: 'nightly-batch',
+    description: 'directories for nightly batch operations'
+)
+
+network_nightly_batch.resource_accesses.create(
+    name: 'read_only',
+    description: 'users needing read access to nightly batch directories')
+
+network_nightly_batch.resource_accesses.create(
+    name: 'update',
+    description: 'users needing read and UPDATE access to nightly batch directories')
+
+
+# ---
+network_fund_reports = Resource.create(
+    resource_type: 'network',
+    name: 'fund-reports',
+    description: 'users needing access to fund reports directories'
+)
+
+network_fund_reports.resource_accesses.create(
+    name: 'full_admin',
+    description: 'users needing full administrative access to fund report directories')
+
+
+# ---
+

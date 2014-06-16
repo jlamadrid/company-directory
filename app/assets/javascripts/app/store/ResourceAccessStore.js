@@ -1,8 +1,8 @@
-Ext.define('CD.store.ApplicationAccessStore', {
+Ext.define('CD.store.ResourceAccessStore', {
     extend: 'Ext.data.Store',
 
     requires: [
-        'CD.model.ApplicationAccess',
+        'CD.model.ResourceAccess',
         'Ext.data.proxy.Rest',
         'Ext.data.reader.Json'
     ],
@@ -15,19 +15,19 @@ Ext.define('CD.store.ApplicationAccessStore', {
             /*
             autoLoad: {
                 callback: function(){
-                    console.log('Autoload application access store ');
+                    console.log('Autoload resource access store ');
                 }
             },
             */
             autoSync: true,
-            model: 'CD.model.ApplicationAccess',
-            storeId: 'applicationAccessStoreId',
+            model: 'CD.model.ResourceAccess',
+            storeId: 'resourceAccessStoreId',
             proxy: {
                 type: 'rest',
-                url: '/api/application_accesses',
+                url: '/api/resource_accesses',
                 reader: {
                     type: 'json',
-                    rootProperty: 'application_accesses'
+                    rootProperty: 'resource_accesses'
                 }
             }
         }, cfg)]);

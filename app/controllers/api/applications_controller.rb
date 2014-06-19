@@ -2,7 +2,7 @@ module Api
 
   class ApplicationsController < ApplicationController
 
-    before_action :set_application, only: [:show]
+    before_action :set_application, only: [:show, :update]
     respond_to :json
 
     #GET http://server:port/api/employees
@@ -19,6 +19,17 @@ module Api
       render json: @application
     end
 
+    def update
+
+      @application.attributes = application_params
+
+      #if @employee.update_attributes(employee_params)
+      if @application.save
+        render :json => { :success => true }
+      else
+        render :json => { :success => false, :errors => @application.errors }, :status => :unprocessable_entity
+      end
+    end
 
     private
     # Use callbacks to share common setup or constraints between actions.
@@ -28,7 +39,7 @@ module Api
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def application_params
-      params.require(:application).permit(:name, :type, :description, :access_email, :created_at, :updated_at)
+      params.require(:application).permit(:id, :name, :app_type, :description, :technical_owner, :home_page, :ticket_url, :documentation_url, :business_owner, :created_at, :updated_at)
     end
 
   end

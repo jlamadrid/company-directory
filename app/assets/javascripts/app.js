@@ -23,7 +23,8 @@ Ext.application({
 
     controllers: [
         'EmployeeController',
-        'ResourceController'
+        'ResourceController',
+        'ApplicationController'
     ],
 
     launch : function() {

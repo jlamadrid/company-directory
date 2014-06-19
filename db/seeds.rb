@@ -235,6 +235,11 @@ email_group_solar.resource_accesses.create(
     name: 'weekly_solar_update',
     description: 'receive weekly updates')
 
+
+email_group_solar.resource_accesses.create(
+    name: 'solar_new_case',
+    description: 'receive notifications when a new case is added to solar.')
+
 # ---
 
 email_group_nightly_batch = Resource.create(
@@ -252,6 +257,21 @@ email_group_nightly_batch.resource_accesses.create(
     description: 'receive weekly summary report emails')
 # ---
 
+email_group_fmdb = Resource.create(
+    resource_type: 'email group',
+    name: 'fmdb',
+    description: 'users working with FMDB',
+    tags: 'fmdb'
+)
+
+email_group_fmdb.resource_accesses.create(
+    name: 'fmdb_outage',
+    description: 'receive notifications when FMDB is in a maintenance period.')
+
+email_group_fmdb.resource_accesses.create(
+    name: 'fmdb_new_fund',
+    description: 'receive notifications when a new fund is added to FMDB.')
+# --
 
 email_group_first_floor_east_batch = Resource.create(
     resource_type: 'email group',

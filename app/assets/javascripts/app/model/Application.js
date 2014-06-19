@@ -17,6 +17,21 @@ Ext.define('CD.model.Application', {
             name: 'description'
         },
         {
+            name: 'technical_owner'
+        },
+        {
+            name: 'home_page'
+        },
+        {
+            name: 'ticket_url'
+        },
+        {
+            name: 'documentation_url'
+        },
+        {
+            name: 'business_owner'
+        },
+        {
             name: 'created_at',
             type: 'date'
         },
@@ -24,15 +39,5 @@ Ext.define('CD.model.Application', {
             name: 'updated_at',
             type: 'date'
         }
-    ],
-
-    hasMany: [
-        {
-            name: 'applicationAccess', //creates the getter getApplicationAccess
-            model: 'CD.model.ApplicationAccess',
-            associationKey: 'applicationAccess'
-        }
     ]
-
-    //hasMany: 'ApplicationAccess' /* generates applicationAccess() method on every Application instance */
 });
